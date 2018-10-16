@@ -1,8 +1,10 @@
 package com.example.sevice;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.UserTestDao;
@@ -40,5 +42,11 @@ public class UserServiceImpl {
             return true;
         }
         return false;
+    }
+    
+    @Cacheable(value = "user" , key = "'user'.concat(#id.toString())")
+    public User get(int id){
+        System.out.println("query form mysql... id=" + id);
+        return userTestDao.get(id);
     }
 }

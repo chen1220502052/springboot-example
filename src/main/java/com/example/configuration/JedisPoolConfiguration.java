@@ -23,6 +23,7 @@ import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
 
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -90,8 +91,8 @@ public class JedisPoolConfiguration {
     public CacheManager cacheManager(@Qualifier("jedisConnectionFactory") RedisConnectionFactory jedisConnectionFactory){
         RedisCacheWriter rcw = RedisCacheWriter.nonLockingRedisCacheWriter(jedisConnectionFactory);
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-        redisCacheConfiguration.entryTtl(Duration.ofSeconds(30));
-//        redisCacheConfiguration.serializeValuesWith(valueSerializationPair)
+        redisCacheConfiguration = redisCacheConfiguration.entryTtl(Duration.ofSeconds(30)); // 赋值给返回的对象
+//        redisCacheConfiguration.serializeValuesWith(valueSerializationPair);
         CacheManager cacheManager = new RedisCacheManager(rcw, redisCacheConfiguration);
         return cacheManager;
     }

@@ -129,6 +129,31 @@
             <scope>test</scope>
         </dependency>
          -->
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+		<dependency>
+		    <groupId>com.google.protobuf</groupId>
+		    <artifactId>protobuf-java</artifactId>
+		    <version>3.6.1</version>
+		</dependency>
+        
+        <dependency>
+            <groupId>com.sogou.upd.timo</groupId>
+            <artifactId>upd-timo-core</artifactId>
+            <version>1.0.9-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
 	</dependencies>
 	<build>
 		<plugins>

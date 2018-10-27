@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "teemo.store.afterservice",
+                "projectName": "teemo.store.afterservice",
+                "workingDirectory": "d:\\myWorkplace\\teemo.store",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "teemo.store.afterservice",
+                "projectName": "teemo.store.afterservice",
+                "workingDirectory": "d:\\myWorkplace\\teemo.store",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

@@ -3,6 +3,7 @@ package com.example.lock;
 import java.util.Collections;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.params.SetParams;
 
 /**
  *  redis 分布式锁
@@ -21,8 +22,12 @@ public class RedisDistributedLock {
     
     public static boolean tryGetDistributeLock(Jedis jedis, String lockKey, 
             String lockValue, int expireTime){
-        String result = jedis.set(lockKey, lockValue, SET_IF_NOT_EXIST, 
-                SET_WITH_EXPIRE_TIME_MS, expireTime); // since redis version: 2.6.12
+        SetParams setParams = SetParams.setParams();
+        setParams.nx();
+        setParams.px(expireTime);
+//        String result = jedis.set(lockKey, lockValue, SET_IF_NOT_EXIST,
+//                SET_WITH_EXPIRE_TIME_MS, expireTime); // since redis version: 2.6.12
+        String result = jedis.set(lockKey, lockValue, setParams);
         if(LOCK_SUCCESS.equals(result)){
             return true;
         }

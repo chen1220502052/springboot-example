@@ -13,13 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+//import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.example.annotation.TokenVerifyAnnotation;
 import com.example.model.User;
 import com.example.sevice.UserServiceImpl;
-import com.sogou.upd.timo.model.Family;
-import com.sogou.upd.timo.service.FamilyService;
+//import com.sogou.upd.timo.model.Family;
+//import com.sogou.upd.timo.service.FamilyService;
 
 
 @Controller
@@ -30,8 +30,8 @@ public class UserVehicleController {
     @Autowired
     private UserServiceImpl userService;
     
-    @Reference
-    private FamilyService familyService;
+//    @Reference
+//    private FamilyService familyService;
     
     @TokenVerifyAnnotation
     @RequestMapping("/say")
@@ -66,10 +66,10 @@ public class UserVehicleController {
                 writer.close();
             }
         }
-        Family family = familyService.get(3002);
-        if(family != null){
-            System.out.println(family.toString());
-        }
+//        Family family = familyService.get(3002);
+//        if(family != null){
+//            System.out.println(family.toString());
+//        }
         
         return null;
     }

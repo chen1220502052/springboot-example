@@ -25,7 +25,6 @@ public class DataSourceConfig {
     @Bean("firstDataSource")
     @Qualifier("firstDataSource")
     @Primary
-    @ConfigurationProperties(prefix="example.datasource.first")
     public DataSource firstDataSource(@Qualifier("firstDataSourceProperties") DataSourceProperties firstDataSourceProperties){
         return firstDataSourceProperties.initializeDataSourceBuilder().build();
     }
@@ -39,7 +38,6 @@ public class DataSourceConfig {
     
     @Bean("secondDataSource")
     @Qualifier("secondDataSource")
-    @ConfigurationProperties(prefix="example.datasource.second")
     public DataSource secondDataSource(@Qualifier("secondDataSourceProperties") DataSourceProperties secondDataSourceProperties) {
         return secondDataSourceProperties.initializeDataSourceBuilder().build();
     }
